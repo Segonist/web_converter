@@ -4,7 +4,7 @@ import ValueObjectProvider from "./ValueContext";
 function App() {
 	return (
 		<div>
-			<ValueObjectProvider value={{ numericValue: 0, unit: "m" }}>
+			<ValueObjectProvider value={{ numericValue: "0", unit: "m" }}>
 				<ValueInput />
 				<ValueInput />
 			</ValueObjectProvider>

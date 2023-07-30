@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { useUpdateValueObject, useValueObject } from "../ValueContext";
+import DropdownMenu from "./DropdownMenu";
 
 const ValueInput = () => {
 	const valueObject = useValueObject();
 	const updateValueObject = useUpdateValueObject();
-	const [newValueObject] = useState(valueObject);
 	const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		updateValueObject({
 			numericValue: event.target.value,
-			unit: newValueObject.unit,
+			unit: inputUnit,
 		});
+	};
+
+	const [inputUnit, setInputUnit] = useState("m");
+	const handleDropdownSelect = (item: string) => {
+		setInputUnit(item);
 	};
 
 	return (
@@ -19,7 +24,7 @@ const ValueInput = () => {
 				onChange={onInputChange}
 				value={parseFloat(valueObject.numericValue)}
 			/>
-			<span>{valueObject.unit}</span>
+			<DropdownMenu elements={["m", "cm", "mm"]} onSelect={handleDropdownSelect} />
 		</div>
 	);
 };
