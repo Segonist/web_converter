@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+
+/* App component */
+
+* {
+    font-family: 'PT Mono', monospace;
+    color: #e6e6e6;
+}
+
+body {
+    background-color: #0A2647;
+}
+
+/* Button component */
+
+.Button {
+    display: flex;
+    font-size: 15px;
+    border-radius: 7px;
+    border: none;
+    padding: 10px;
+    background-color: #19376D;
+    color: inherit;
+    height: inherit;
+}
+
+.Button:hover {
+    filter: brightness(90%);
+}
+
+.Button:active {
+    filter: contrast(80%);
+}
+
+/* Alert component */
+
+.Alert {
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    width: fit-content;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 2px solid #144272;
+    border-radius: 10px;
+    padding: 7px 10px;
+}
+
+.Alert > span {
+    margin-right: 10px;
+}
+
+/* ValueInput component */
+
+.ValueInput > input {
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #fff;
+    background-color: #19376D;
+}
