@@ -1,5 +1,9 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-import valueObjectTemplate from "./valueObjectTemplate";
+
+interface valueObjectTemplate {
+	numericValue: string;
+	unit: string;
+}
 
 const ValueObjectContext = createContext<valueObjectTemplate | null>(null);
 const UpdateValueObjectContext = createContext<React.Dispatch<

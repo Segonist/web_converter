@@ -4,10 +4,12 @@ import { useUpdateValueObject, useValueObject } from "../ValueContext";
 const ValueInput = () => {
 	const valueObject = useValueObject();
 	const updateValueObject = useUpdateValueObject();
-	const [newValueObject, setNewValueObject] = useState(valueObject);
-	const onInputChange = (event: any) => {
-		setNewValueObject({ numericValue: event.target.value, unit: "m" });
-		updateValueObject(newValueObject);
+	const [newValueObject] = useState(valueObject);
+	const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		updateValueObject({
+			numericValue: event.target.value,
+			unit: newValueObject.unit,
+		});
 	};
 
 	return (
@@ -15,9 +17,9 @@ const ValueInput = () => {
 			<input
 				type="number"
 				onChange={onInputChange}
-				value={newValueObject.numericValue}
+				value={parseFloat(valueObject.numericValue)}
 			/>
-			<span></span>
+			<span>{valueObject.unit}</span>
 		</div>
 	);
 };
