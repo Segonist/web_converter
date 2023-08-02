@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUpdateValueObject, useValueObject } from "../ValueContext";
 import DropdownMenu from "./DropdownMenu";
+import inputFormate from "../utils/inputFormate";
 
 const ValueInput = () => {
 	const valueObject = useValueObject();
 	const updateValueObject = useUpdateValueObject();
-	const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const [inputValue, setInputValue] = useState("");
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		var input = inputFormate(event.target.value);
+		setInputValue(input);
 		updateValueObject({
-			numericValue: event.target.value,
+			numericValue: input,
 			unit: inputUnit,
 		});
 	};
+
+	useEffect(() => {
+		setInputValue(valueObject.numericValue);
+	});
 
 	const [inputUnit, setInputUnit] = useState("m");
 	const handleDropdownSelect = (item: string) => {
@@ -19,11 +27,7 @@ const ValueInput = () => {
 
 	return (
 		<div className="ValueInput">
-			<input
-				type="number"
-				onChange={onInputChange}
-				value={parseFloat(valueObject.numericValue)}
-			/>
+			<input type="text" value={inputValue} onChange={handleInputChange} />
 			<DropdownMenu elements={["m", "cm", "mm"]} onSelect={handleDropdownSelect} />
 		</div>
 	);
