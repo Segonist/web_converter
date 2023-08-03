@@ -22,7 +22,7 @@ input[type="number"] {
 	-moz-appearance: textfield;
 }
 
-/* Button component */
+/* button styles */
 
 .btn {
 	display: flex;
@@ -75,7 +75,7 @@ input[type="number"] {
 	padding: 5px;
 	border: 1px solid #205295;
 	background-color: #19376d;
-    box-shadow: 2px 5px 9px 0px rgb(0, 0, 0, 0.5);
+	box-shadow: 2px 5px 9px 0px rgb(0, 0, 0, 0.5);
 }
 
 /* DropdownMenu component */
@@ -83,14 +83,14 @@ input[type="number"] {
 .DropdownMenu-elements {
 	position: absolute;
 	width: max-content;
-    box-shadow: 2px 5px 9px 0px rgb(0, 0, 0, 0.5);
+	box-shadow: 2px 5px 9px 0px rgb(0, 0, 0, 0.5);
 }
 
 .DropdownMenu-selected {
 	background-color: #19376d;
 	border: 1px solid #205295;
 	border-radius: 5px;
-    box-shadow: 2px 5px 9px 0px rgb(0, 0, 0, 0.5);
+	box-shadow: 2px 5px 9px 0px rgb(0, 0, 0, 0.5);
 }
 
 .dropdownOpen {

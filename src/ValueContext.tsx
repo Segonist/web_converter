@@ -12,27 +12,19 @@ const UpdateValueObjectContext = createContext<React.Dispatch<
 
 export const useValueObject = () => {
 	const currentValueObjectContext = useContext(ValueObjectContext);
-
 	if (!currentValueObjectContext) {
-		throw new Error(
-			"useValueObject has to be used within <ValueObjectContext.Provider>"
-		);
+		throw new Error("useValueObject has to be used within <ValueObjectContext.Provider>");
 	}
-
 	return currentValueObjectContext;
 };
 
 export const useUpdateValueObject = () => {
-	const currentUpdateValueObjectContext = useContext(
-		UpdateValueObjectContext
-	);
-
+	const currentUpdateValueObjectContext = useContext(UpdateValueObjectContext);
 	if (!currentUpdateValueObjectContext) {
 		throw new Error(
 			"useUpdateValueObjectContext has to be used within <UpdateValueObjectContext.Provider>"
 		);
 	}
-
 	return currentUpdateValueObjectContext;
 };
 
