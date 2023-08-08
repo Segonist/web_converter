@@ -28,7 +28,11 @@ const ValueInput = () => {
 	return (
 		<div className="ValueInput">
 			<input type="text" value={inputValue} onChange={handleInputChange} />
-			<DropdownMenu elements={["m", "cm", "mm"]} onSelect={handleDropdownSelect} />
+			<DropdownMenu
+				elements={["m", "cm", "mm"]}
+				width="50px"
+				onSelect={handleDropdownSelect}
+			/>
 		</div>
 	);
 };

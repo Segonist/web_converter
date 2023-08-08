@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap");
 
-/* App component */
-
 * {
 	font-family: "PT Mono", monospace;
 	font-size: 18px;
@@ -22,10 +20,13 @@ input[type="number"] {
 	-moz-appearance: textfield;
 }
 
+.hide-element {
+	display: none;
+}
+
 /* button styles */
 
 .btn {
-	display: flex;
 	border-radius: 7px;
 	border: none;
 	padding: 8px 10px;
@@ -82,15 +83,16 @@ input[type="number"] {
 
 .DropdownMenu-elements {
 	position: absolute;
-	width: max-content;
 	box-shadow: 2px 5px 9px 0px rgb(0, 0, 0, 0.5);
 }
 
 .DropdownMenu-selected {
+	width: 100%;
 	background-color: #19376d;
 	border: 1px solid #205295;
 	border-radius: 5px;
 	box-shadow: 2px 5px 9px 0px rgb(0, 0, 0, 0.5);
+	overflow: hidden;
 }
 
 .dropdownOpen {
@@ -103,6 +105,7 @@ input[type="number"] {
 	border: 1px solid #205295;
 	width: 100%;
 	border-radius: 0px;
+	overflow: hidden;
 }
 
 .DropdownMenu-element:last-child {
