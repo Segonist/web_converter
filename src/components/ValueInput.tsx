@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useUpdateValueObject, useValueObject } from "../ValueContext";
 import DropdownMenu from "./DropdownMenu";
 import inputFormate from "../utils/inputFormate";
+import convertUnits from "../utils/convertUnits";
 
 const ValueInput = () => {
 	const valueObject = useValueObject();
 	const updateValueObject = useUpdateValueObject();
-	const [inputValue, setInputValue] = useState("");
+	const [inputValue, setInputValue] = useState("0");
+	const [inputUnit, setInputUnit] = useState("m");
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		var input = inputFormate(event.target.value);
 		setInputValue(input);
@@ -17,10 +19,15 @@ const ValueInput = () => {
 	};
 
 	useEffect(() => {
-		setInputValue(valueObject.numericValue);
-	});
+		var newValue = convertUnits(
+			"distance",
+			valueObject.unit,
+			inputUnit,
+			parseFloat(valueObject.numericValue)
+		);
+		setInputValue(newValue.toString());
+	}, [valueObject]);
 
-	const [inputUnit, setInputUnit] = useState("m");
 	const handleDropdownSelect = (item: string) => {
 		setInputUnit(item);
 	};
