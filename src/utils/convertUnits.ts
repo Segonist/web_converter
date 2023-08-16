@@ -1,27 +1,30 @@
+import bigDecimal from "js-big-decimal";
+
 const units: { [index: string]: any } = {
 	distance: {
-		km: 1000,
-		m: 1,
-		dm: 0.1,
-		cm: 0.01,
-		mm: 0.001,
+		km: 1000000,
+		m: 1000,
+		dm: 100,
+		cm: 10,
+		mm: 1,
 	},
 	weight: {
-		t: 1000,
-		kg: 1,
-		g: 0.001,
-		mg: 0.000001,
+		t: 100000000,
+		kg: 100000,
+		g: 1000,
+		mg: 1,
 	},
 };
 
 const convertUnits = (
-	convertion_type: string,
-	input_unit: string,
-	output_unit: string,
-	input_value: number
+	convertionType: string,
+	inputUnit: string,
+	outputUnit: string,
+	inputValue: string
 ) => {
-	var result = input_value * units[convertion_type][input_unit];
-	result /= units[convertion_type][output_unit];
+	var result = bigDecimal.multiply(inputValue, units[convertionType][inputUnit]);
+	result = bigDecimal.divide(result, units[convertionType][outputUnit]);
+	result = parseFloat(result).toString();
 	return result;
 };
 

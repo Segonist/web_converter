@@ -23,9 +23,9 @@ const ValueInput = () => {
 			"distance",
 			valueObject.unit,
 			inputUnit,
-			parseFloat(valueObject.numericValue)
+			valueObject.numericValue
 		);
-		setInputValue(newValue.toString());
+		setInputValue(newValue);
 	}, [valueObject]);
 
 	const handleDropdownSelect = (item: string) => {
