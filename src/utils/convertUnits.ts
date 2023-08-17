@@ -1,20 +1,7 @@
 import bigDecimal from "js-big-decimal";
+import * as unitsMultipliers from "../data/unitsMultipliers.json";
 
-const units: { [index: string]: any } = {
-	distance: {
-		km: 1000000,
-		m: 1000,
-		dm: 100,
-		cm: 10,
-		mm: 1,
-	},
-	weight: {
-		t: 100000000,
-		kg: 100000,
-		g: 1000,
-		mg: 1,
-	},
-};
+const units: { [index: string]: any } = unitsMultipliers;
 
 const convertUnits = (
 	convertionType: string,
@@ -22,8 +9,11 @@ const convertUnits = (
 	outputUnit: string,
 	inputValue: string
 ) => {
+	// the input number is multiplied by the appropriate multiplier to obtain a number in units with a multiplier of 1 (see assets/unitsMultipliers.json)
 	var result = bigDecimal.multiply(inputValue, units[convertionType][inputUnit]);
+	// then it is multiplied by the appropriate multiplier to convert to the requested unit
 	result = bigDecimal.divide(result, units[convertionType][outputUnit]);
+	// for some reasone, bigDecimal.divide() function returns something like 1.000000000, so this line formats it
 	result = parseFloat(result).toString();
 	return result;
 };

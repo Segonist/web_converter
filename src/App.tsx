@@ -1,5 +1,5 @@
 import ValueInput from "./components/ValueInput";
-import ValueObjectProvider from "./ValueContext";
+import ValueObjectProvider from "./context/ValueContext";
 
 function App() {
 	return (
