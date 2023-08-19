@@ -4,9 +4,9 @@ import ValueObjectProvider from "./context/ValueContext";
 function App() {
 	return (
 		<div>
-			<ValueObjectProvider value={{ numericValue: "0", unit: "m" }}>
-				<ValueInput />
-				<ValueInput />
+			<ValueObjectProvider value={{ numericValue: "0", unit: "" }}>
+				<ValueInput inputType="weight" />
+				<ValueInput inputType="weight" />
 			</ValueObjectProvider>
 		</div>
 	);

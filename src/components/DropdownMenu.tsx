@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 
 interface Props {
 	elements: string[];
+	defaultElement: string;
 	width?: string;
 	onSelect?: (unit: string) => void;
 }
 
-const DropdownMenu = ({ elements, width, onSelect }: Props) => {
-	const [selectedElement, setSelectedElement] = useState(elements[0]);
+const DropdownMenu = ({ elements, defaultElement, width, onSelect }: Props) => {
+	const [selectedElement, setSelectedElement] = useState(defaultElement);
 	const [dropdownElements, setDropdownElements] = useState(elements);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [hoverOver, setHoverOver] = useState(false);

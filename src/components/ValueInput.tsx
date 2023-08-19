@@ -3,12 +3,19 @@ import { useUpdateValueObject, useValueObject } from "../context/ValueContext";
 import DropdownMenu from "./DropdownMenu";
 import inputFormate from "../utils/inputFormate";
 import convertUnits from "../utils/convertUnits";
+import * as inputTypes from "../data/inputTypes.json";
+const inputTypesDict: { [index: string]: any } = inputTypes;
 
-const ValueInput = () => {
+interface Props {
+	inputType: string;
+}
+
+const ValueInput = ({ inputType }: Props) => {
 	const valueObject = useValueObject();
 	const updateValueObject = useUpdateValueObject();
 	const [inputValue, setInputValue] = useState("0");
-	const [inputUnit, setInputUnit] = useState("m");
+	const defaultInputUnit = inputTypesDict[inputType][2];
+	const [inputUnit, setInputUnit] = useState(defaultInputUnit);
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		// on each input change it formate it, then updates input element and context value
 		var input = inputFormate(event.target.value);
@@ -22,7 +29,7 @@ const ValueInput = () => {
 	useEffect(() => {
 		// on receiving updated value it converts it, then updates input element
 		var newValue = convertUnits(
-			"distance",
+			inputType,
 			valueObject.unit,
 			inputUnit,
 			valueObject.numericValue
@@ -38,8 +45,9 @@ const ValueInput = () => {
 		<div className="ValueInput">
 			<input type="text" value={inputValue} onChange={handleInputChange} />
 			<DropdownMenu
-				elements={["m", "cm", "mm"]}
-				width="50px"
+				elements={inputTypesDict[inputType][0]}
+				defaultElement={defaultInputUnit}
+				width={`${inputTypesDict[inputType][1]}px`}
 				onSelect={handleDropdownSelect}
 			/>
 		</div>
