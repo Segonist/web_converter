@@ -14,4 +14,11 @@ describe("convertions work right", () => {
 		expect(convertUnits("weight", "g", "t", "646257000")).to.equal("646.257");
 		expect(convertUnits("weight", "mg", "g", "64598")).to.equal("64.598");
 	});
+
+	it("if just minus presented", () => {
+		expect(convertUnits("distance", "km", "m", "-")).to.equal("-");
+	});
+	it("if last symbol in inputValue is dot", () => {
+		expect(convertUnits("distance", "km", "m", "3.")).to.equal("3000.");
+	});
 });

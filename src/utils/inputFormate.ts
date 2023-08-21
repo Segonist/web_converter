@@ -1,19 +1,19 @@
 const inputFormate = (input: string) => {
-	if (input.length < 1) {
+	if (input.trim().length < 1) {
 		// in case someone try to clear the input
 		return "0";
 	}
-	if (input == "-0") {
+	if (input == "-0" || input == "-") {
 		// your math have -0??? my not
 		return "-";
-	}
-	if (parseFloat(input).toString() == input) {
-		// if there is just number in input, and nothing extraordinal
-		return input;
 	}
 	if (input == "NaN") {
 		// errors just wanishing input
 		return "0";
+	}
+	if (parseFloat(input).toString() == input) {
+		// if there is just number in input, and nothing extraordinal
+		return input;
 	}
 	var formatedInput = input;
 	if (formatedInput.length > 1 && formatedInput.startsWith("0") && /[1-9]/.test(formatedInput)) {
@@ -35,8 +35,7 @@ const inputFormate = (input: string) => {
 			// deleting all dot's except the first one
 			let lastIndex = formatedInput.lastIndexOf(".");
 			formatedInput =
-				formatedInput.substring(0, lastIndex) +
-				(lastIndex == formatedInput.length ? "" : formatedInput.substring(lastIndex + 1));
+				formatedInput.substring(0, lastIndex) + formatedInput.substring(lastIndex + 1);
 		}
 	}
 	const re = /(?<!^)-|[^0-9-.]/g;
