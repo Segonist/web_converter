@@ -1,4 +1,0 @@
-{
-    "distance": [["km", "m", "dm", "cm", "mm"], 50, "m"],
-	"weight": [["t","kg","g","mg"], 50, "kg"]
-}
