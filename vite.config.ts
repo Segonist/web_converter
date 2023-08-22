@@ -12,4 +12,5 @@ export default defineConfig({
 			reportsDirectory: "./src/__tests__/coverage",
 		},
 	},
+	base: "/web_converter/",
 });
