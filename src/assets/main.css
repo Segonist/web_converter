@@ -4,10 +4,12 @@
 	font-family: "PT Mono", monospace;
 	font-size: 18px;
 	color: #e6e6e6;
+	box-sizing: border-box;
 }
 
 body {
 	background-color: #0a2647;
+	margin: 0;
 }
 
 input::-webkit-outer-spin-button,
@@ -111,4 +113,28 @@ input[type="number"] {
 .DropdownMenu-element:last-child {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+}
+
+/* Header component */
+
+header {
+	display: flex;
+	align-items: center;
+	width: 100vw;
+	padding: 5px;
+	box-shadow: 0px 20px 30px 5px rgba(0, 0, 0, 0.25);
+	background-color: #0a2647;
+	outline: 1px solid #205295;
+	margin-bottom: 20px;
+}
+
+.burger {
+	width: 40px;
+}
+
+h2 {
+	margin-left: 10px;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 0;
 }
