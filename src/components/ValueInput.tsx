@@ -38,6 +38,9 @@ const ValueInput = ({ inputType }: Props) => {
 	}, [valueObject]);
 
 	const handleDropdownSelect = (item: string) => {
+		// on changing dropdown unit it converts value of input, changes input and only then changes inputUnit var
+		var newValue = convertUnits(inputType, inputUnit, item, inputValue);
+		setInputValue(newValue);
 		setInputUnit(item);
 	};
 
