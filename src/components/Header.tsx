@@ -1,14 +1,25 @@
-import burgerMenu from "../assets/burger-menu.svg";
+import { useState } from "react";
+import BurgerMenu from "./BurgerMenu";
+import SideBar from "./SideBar";
+import { useConvertionType } from "../context/convertionTypeContext";
 
-interface Props {
-	convertionType: string;
-}
-
-const Header = ({ convertionType }: Props) => {
+const Header = () => {
+	const convertionType = useConvertionType();
+	const [SideBarOpen, setSideBarOpen] = useState("false");
+	const burgerClickHandle = () => {
+		if (SideBarOpen == "false") {
+			setSideBarOpen("true");
+		} else {
+			setSideBarOpen("false");
+		}
+	};
 	return (
 		<header>
-			<img src={burgerMenu} alt="burger manu icon" className="burger" />
-			<h2>{convertionType}</h2>
+			<div className="header-content" data-open={SideBarOpen}>
+				<BurgerMenu onBurgerClick={burgerClickHandle} />
+				<h2>{convertionType}</h2>
+			</div>
+			<SideBar open={SideBarOpen} />
 		</header>
 	);
 };

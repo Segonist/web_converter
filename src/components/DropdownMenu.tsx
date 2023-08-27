@@ -10,8 +10,10 @@ interface Props {
 const DropdownMenu = ({ elements, defaultElement, width, onSelect }: Props) => {
 	const [selectedElement, setSelectedElement] = useState(defaultElement);
 	const [dropdownElements, setDropdownElements] = useState(elements);
+
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [hoverOver, setHoverOver] = useState(false);
+
 	useEffect(() => {
 		// this hook prevents appearing same element in list and selected state (just UI thing)
 		setDropdownElements(elements);
@@ -22,6 +24,14 @@ const DropdownMenu = ({ elements, defaultElement, width, onSelect }: Props) => {
 			return filtered;
 		});
 	}, [selectedElement]);
+
+	useEffect(() => {
+		setDropdownElements(elements);
+	}, [elements]);
+	useEffect(() => {
+		setSelectedElement(defaultElement);
+	}, [defaultElement]);
+
 	const handleOnBlur = () => {
 		// onBlur event occures when element loses focus
 		if (!hoverOver && dropdownOpen) {
@@ -31,6 +41,7 @@ const DropdownMenu = ({ elements, defaultElement, width, onSelect }: Props) => {
 			});
 		}
 	};
+
 	const handleDropdownToggle = () => {
 		setDropdownOpen((currentState) => {
 			return !currentState;
@@ -43,6 +54,7 @@ const DropdownMenu = ({ elements, defaultElement, width, onSelect }: Props) => {
 		}
 		setDropdownOpen(false);
 	};
+
 	return (
 		<div className="DropdownMenu" style={{ width: width }}>
 			<button

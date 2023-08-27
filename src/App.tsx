@@ -1,16 +1,17 @@
 import Header from "./components/Header";
 import ValueInput from "./components/ValueInput";
 import ValueObjectProvider from "./context/ValueContext";
+import ConvertionTypeProvider from "./context/convertionTypeContext";
 
 function App() {
 	return (
-		<div>
-			<Header convertionType="Weight" />
+		<ConvertionTypeProvider value="distance">
+			<Header />
 			<ValueObjectProvider value={{ numericValue: "0", unit: "" }}>
-				<ValueInput inputType="weight" />
-				<ValueInput inputType="weight" />
+				<ValueInput />
+				<ValueInput />
 			</ValueObjectProvider>
-		</div>
+		</ConvertionTypeProvider>
 	);
 }
 
